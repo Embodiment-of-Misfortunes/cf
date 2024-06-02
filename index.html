@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Cloud Fortress</title>
+    <script src="script.js" defer></script> <!-- Include your script file here -->
+</head>
+<body>
+ <div class="wrapper">
+    <style>
+        .nav {
+            display: flex;
+            align-items: center; /* Align items vertically */
+        }
+    
+        .nav-logo img {
+            max-width: 150px; /* Set the maximum width */
+            height: auto; /* Maintain aspect ratio */
+            vertical-align: middle; /* Align the image vertically */
+        }
+    </style>
+    
+    <nav class="nav">
+        <div class="nav-logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#" class="link active">Home</a></li>
+                <!--<li><a href="#" class="link">Blog</a></li>-->
+                <!--<li><a href="#" class="link">Services</a></li>-->
+                <li><a href="#" class="link">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn">Sign In</button>
+            <button class="btn" id="registerBtn">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+    
+    
+
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+
+        <div class="login-container" id="login">
+            <div class="top">
+                <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+            <form id="loginForm">
+                <div class="input-box">
+                    <input type="text" id="loginIdentifier" class="input-field" placeholder="Username or Email">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="loginPassword" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+            </form>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <form id="registerForm">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" id="firstName" class="input-field" placeholder="Firstname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" id="lastName" class="input-field" placeholder="Lastname">
+                        <i class="bx bx-user"></i>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="email" class="input-field" placeholder="Email">
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" class="input-field" placeholder="Password">
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+            </form>
+            
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Terms & conditions</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+<script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+     // Function to toggle login form visibility and change button colors
+     function login() {
+        showLoginForm();
+        document.getElementById("loginFormButton").click(); // Programmatically trigger login form button click
+        document.getElementById("loginBtn").classList.add("white-btn");
+        document.getElementById("registerBtn").classList.remove("white-btn");
+    }
+
+    // Function to toggle registration form visibility and change button colors
+    function register() {
+        showRegisterForm();
+        document.getElementById("registerFormButton").click(); // Programmatically trigger register form button click
+        document.getElementById("loginBtn").classList.remove("white-btn");
+        document.getElementById("registerBtn").classList.add("white-btn");
+    }
+
+    // Add event listener for the "Sign In" button
+    document.getElementById("loginBtn").addEventListener("click", login);
+
+    // Add event listener for the "Sign Up" button
+    document.getElementById("registerBtn").addEventListener("click", register);
+    
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.classList.add("white-btn");
+        b.classList.remove("white-btn");
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.classList.remove("white-btn");
+        b.classList.add("white-btn");
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+    function showLoginForm() {
+        const loginForm = document.getElementById("login");
+        const registerForm = document.getElementById("register");
+
+        loginForm.style.left = "4px";
+        registerForm.style.right = "-520px";
+
+        // Change button colors
+        a.classList.add("white-btn");
+        b.classList.remove("white-btn");
+    }
+
+    function showRegisterForm() {
+        const loginForm = document.getElementById("login");
+        const registerForm = document.getElementById("register");
+
+        loginForm.style.left = "-510px";
+        registerForm.style.right = "5px";
+
+        // Change button colors
+        a.classList.remove("white-btn");
+        b.classList.add("white-btn");
+    }
+
+    // Function to show the login form and change button color
+    function showLoginFormAndChangeColor() {
+        showLoginForm();
+        a.classList.add("white-btn");
+        b.classList.remove("white-btn");
+    }
+
+    // Function to show the registration form and change button color
+    function showRegisterFormAndChangeColor() {
+        showRegisterForm();
+        a.classList.remove("white-btn");
+        b.classList.add("white-btn");
+    }
+
+    // Add event listener for the "Sign In" button
+    document.getElementById("loginBtn").addEventListener("click", showLoginFormAndChangeColor);
+
+    // Add event listener for the "Sign Up" button
+    document.getElementById("registerBtn").addEventListener("click", showRegisterFormAndChangeColor);
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Get form elements
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+
+        // Add event listener for login form submit
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(loginForm);
+
+            // You can directly store credentials in the database here if you must,
+            // but this is highly discouraged for security reasons.
+
+            // Example:
+            const usernameOrEmail = formData.get("loginIdentifier");
+            const password = formData.get("loginPassword");
+
+            console.log("Username/Email:", usernameOrEmail);
+            console.log("Password:", password);
+
+            // Simulate successful login for demonstration purposes
+            console.log("Simulated successful login");
+        });
+
+        // Add event listener for registration form submit
+        registerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(registerForm);
+
+            // You can directly store user data in the database here if you must,
+            // but this is highly discouraged for security reasons.
+
+            // Example:
+            const firstName = formData.get("firstName");
+            const lastName = formData.get("lastName");
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            console.log("First Name:", firstName);
+            console.log("Last Name:", lastName);
+            console.log("Email:", email);
+            console.log("Password:", password);
+
+            // Simulate successful registration for demonstration purposes
+            console.log("Simulated successful registration");
+        });
+    });
+</script>
+
+<script>
+    // Global error handler function
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error("An error occurred:", {
+        message: message,
+        source: source,
+        line: lineno,
+        column: colno,
+        error: error
+    });
+};
+
+// Alternatively, you can use addEventListener to attach the error event
+window.addEventListener("error", function(event) {
+    console.error("An error occurred:", event.error);
+});
+
+    </script>
+
+</body>
+</html>
